@@ -1,3 +1,4 @@
+from flask import render_template
 from app import app
 
 
@@ -5,12 +6,12 @@ from app import app
 @app.route('/index')
 def index():
     user = {'username': 'Miguel'}
-    return '''
-    <html>
-        <head>
-            <title>Home Page - Microblog</title>
-        </head>
-        <body>
-            <h1>Hello, ''' + user['username'] + '''!</h1>
-        </body>
-    </html>'''
+    return render_template('index.html', title='Home', user=user)
+
+
+''' 
+render_template() function invokes the Jinja2 template engine that 
+comes bundled with the Flask framework. Jinja2 substitutes {{ ... }} 
+blocks with the corresponding values, given by the arguments provided 
+in the render_template() call.
+'''
